@@ -56,6 +56,15 @@
   .badges span { display: inline-block; border: 2px outset #fff; background: #000; color: #fff;
     font: bold 10px Arial, sans-serif; padding: 3px 5px; margin: 2px; }
   .badges span:nth-child(2) { background: #008080; } .badges span:nth-child(3) { background: #800000; }
+  #dotd { border: 4px ridge #00cc00; background: #000; color: #00ff00; padding: 8px; margin: 10px 0;
+    font-family: "Courier New", monospace; }
+  #dotd h3 { margin: 2px 0 6px; text-align: center; color: #ffff00; font-family: Impact, "Arial Black", sans-serif;
+    font-size: 24px; letter-spacing: 1px; }
+  #dotd .row { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; justify-content: center; }
+  #dotd .photo { width: 160px; min-height: 140px; margin: 0; }
+  #dotd .txt { flex: 1 1 260px; }
+  #dotd .name { color: #ff66ff; font-size: 20px; font-weight: bold; }
+  #dotd .credit { color: #9f9; } #dotd .credit a { color: #9ff; }
   #error { color: red; font-weight: bold; text-align: center; }
   @media (max-width: 480px) { h1 { font-size: 26px; } }
 </style>
@@ -70,6 +79,25 @@
 <div class="rainbow"></div>
 
 <div class="construction"><b class="blink">!! NEW !! &nbsp; UPDATED 06/11/98 &nbsp; !! NEW !!</b></div>
+
+<div id="dotd">
+  <h3>&#9733; <span class="blink">DANIEL OF THE DAY</span> &#9733;</h3>
+  <div class="row">
+    <div>
+      <div class="photo" id="dotd-photo">Loading...</div>
+      <div class="credit" id="dotd-credit"></div>
+    </div>
+    <div class="txt">
+      <div>&gt; <span id="dotd-date"></span></div>
+      <div>&gt; Today's Daniel is:</div>
+      <div class="name" id="dotd-name"></div>
+      <p id="dotd-desc"></p>
+      <div>&gt; Daniel's wisdom: <i id="dotd-quote"></i></div>
+      <div>&gt; Lucky cardigan colour: <b id="dotd-colour"></b></div>
+      <div>&gt; Come back tomorrow 4 a new Daniel!!<span class="blink">_</span></div>
+    </div>
+  </div>
+</div>
 
 <p>Hello and welcome, fellow Daniel fan! &#9752; Answer the 10 questions below <b>honestly</b> and my
 <u>state of the art</u> JavaScript will work out which Daniel O'Donnell matches your personality.
@@ -284,6 +312,57 @@ document.getElementById("again").onclick = function () {
   document.getElementById("result").style.display = "none";
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
+
+
+// ---------- DANIEL OF THE DAY ----------
+var DAILY = [
+  ["Sexy Daniel", "The cardigan is unbuttoned. TWO buttons today. Lock up your nans."],
+  ["Sly Daniel", "Has been seen near the raffle table. Check your tickets."],
+  ["Cardigan Kingpin Daniel", "Moving 300 cardigans across the border tonight. Ask no questions."],
+  ["Feral Donegal Daniel", "Spotted on a cliff, singing at a puffin. The puffin cried."],
+  ["Mammy's Little Menace Daniel", "Broke a good plate. Blamed the dog. There is no dog."],
+  ["Diva Daniel", "Refused to go on stage until the custard creams were arranged by size."],
+  ["Haunted Daniel", "Appears in your kitchen at 3am humming a waltz. Leaves a scone."],
+  ["Smug Daniel", "Knows he's got the best hair in the parish and he will not let it go."],
+  ["Daniel Who Knows Too Much", "Has seen what's in the parish hall freezer. Won't talk about it."],
+  ["Disco Daniel", "Swapped the rhinestones for a mirrorball. Visible from space."],
+  ["Sleepy Daniel", "Nodded off during his own encore. The crowd sang him a lullaby."],
+  ["Gym Daniel", "Did one (1) sit-up. Now wears the cardigan sleeveless."],
+  ["Undercover Daniel", "Wearing a fake moustache. Everyone still recognises him. Signs autographs anyway."],
+  ["Chaos Daniel", "Put salt in the sugar bowl at the tea party. Pure evil. Smiled the whole time."]
+];
+var WISDOM = [
+  "\"Never trust a man without a cardigan.\"",
+  "\"Put the kettle on. Then put it on again.\"",
+  "\"A scone in the hand is worth two in the tin.\"",
+  "\"Ring your mammy.\"",
+  "\"Always one more encore.\"",
+  "\"Sequins are just sparkly confidence.\"",
+  "\"If they're not crying by the third ballad, sing a fourth.\"",
+  "\"The tea is never too strong. You are too weak.\""
+];
+var COLOURS = ["Beige", "Oatmeal", "Mint Humbug Green", "Funeral Navy", "Rhinestone Silver", "Scandalous Burgundy", "Biscuit", "Mustard"];
+
+(function () {
+  var now = new Date();
+  var day = Math.floor((Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
+  function pick(arr, salt) { return arr[(day * 7 + salt) % arr.length]; }
+  var d = pick(DAILY, 0);
+  document.getElementById("dotd-date").textContent = now.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  document.getElementById("dotd-name").textContent = d[0];
+  document.getElementById("dotd-desc").textContent = d[1];
+  document.getElementById("dotd-quote").textContent = pick(WISDOM, 3);
+  document.getElementById("dotd-colour").textContent = pick(COLOURS, 5);
+  loadPhotos(function (list) {
+    var box = document.getElementById("dotd-photo");
+    if (!list.length) { box.innerHTML = "<div style='padding:10px;text-align:center'>[ DANIEL.JPG ]<br>too sexy 2 load</div>"; return; }
+    var p = list[day % list.length];
+    var img = new Image(); img.alt = "Daniel O'Donnell";
+    img.onload = function () { box.innerHTML = ""; box.appendChild(img); };
+    img.src = p.src;
+    document.getElementById("dotd-credit").innerHTML = '<a href="' + p.page + '" target="_blank" rel="noopener">Wikimedia Commons</a>';
+  });
+})();
 
 // ---------- RETRO HIT COUNTER ----------
 (function () {
