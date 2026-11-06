@@ -65,6 +65,18 @@
   #dotd .txt { flex: 1 1 260px; }
   #dotd .name { color: #ff66ff; font-size: 20px; font-weight: bold; }
   #dotd .credit { color: #9f9; } #dotd .credit a { color: #9ff; }
+  #popup-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center;
+    justify-content: center; z-index: 999; padding: 16px; }
+  #popup-bg.hidden { display: none; }
+  .win { background: #c0c0c0; border: 3px outset #fff; width: 520px; max-width: 100%; max-height: 90vh; overflow: auto;
+    box-shadow: 6px 6px 0 #000; animation: popin .25s ease-out; }
+  @keyframes popin { from { transform: scale(.3); } to { transform: scale(1); } }
+  .titlebar { background: linear-gradient(90deg, #000080, #1084d0); color: #fff; font: bold 13px Arial, sans-serif;
+    padding: 3px 4px 3px 8px; display: flex; justify-content: space-between; align-items: center; }
+  .titlebar button { font: bold 12px Arial, sans-serif; width: 22px; height: 20px; padding: 0; background: #c0c0c0;
+    border: 2px outset #fff; cursor: pointer; }
+  .win #dotd { margin: 6px; }
+  .win .actions { text-align: center; padding: 4px 0 10px; }
   #error { color: red; font-weight: bold; text-align: center; }
   @media (max-width: 480px) { h1 { font-size: 26px; } }
 </style>
@@ -80,7 +92,10 @@
 
 <div class="construction"><b class="blink">!! NEW !! &nbsp; UPDATED 06/11/98 &nbsp; !! NEW !!</b></div>
 
-<div id="dotd">
+<div id="popup-bg">
+  <div class="win" role="dialog" aria-label="Daniel of the Day">
+    <div class="titlebar"><span>&#9733; DANIEL_OF_THE_DAY.EXE</span><button type="button" class="popup-close" aria-label="Close">X</button></div>
+    <div id="dotd">
   <h3>&#9733; <span class="blink">DANIEL OF THE DAY</span> &#9733;</h3>
   <div class="row">
     <div>
@@ -98,6 +113,11 @@
     </div>
   </div>
 </div>
+    <div class="actions"><button class="btn popup-close" type="button">OK, I LOVE HIM</button></div>
+  </div>
+</div>
+
+<p class="center"><a href="#" id="dotd-open">&#9733; Show me the Daniel of the Day again &#9733;</a></p>
 
 <p>Hello and welcome, fellow Daniel fan! &#9752; Answer the 10 questions below <b>honestly</b> and my
 <u>state of the art</u> JavaScript will work out which Daniel O'Donnell matches your personality.
@@ -362,6 +382,16 @@ var COLOURS = ["Beige", "Oatmeal", "Mint Humbug Green", "Funeral Navy", "Rhinest
     img.src = p.src;
     document.getElementById("dotd-credit").innerHTML = '<a href="' + p.page + '" target="_blank" rel="noopener">Wikimedia Commons</a>';
   });
+})();
+
+
+// popup open/close
+(function () {
+  var bg = document.getElementById("popup-bg");
+  function close() { bg.classList.add("hidden"); }
+  Array.prototype.forEach.call(document.querySelectorAll(".popup-close"), function (b) { b.onclick = close; });
+  bg.onclick = function (e) { if (e.target === bg) close(); };
+  document.getElementById("dotd-open").onclick = function (e) { e.preventDefault(); bg.classList.remove("hidden"); };
 })();
 
 // ---------- RETRO HIT COUNTER ----------
