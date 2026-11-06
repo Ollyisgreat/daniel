@@ -3,47 +3,46 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
 <title>Which Daniel O'Donnell Are You?</title>
 <style>
   :root { color-scheme: light; }
   body {
     margin: 0; padding: 8px;
-    background-color: #000080;
-    background-image:
-      radial-gradient(#ffffff 1px, transparent 1.5px),
-      radial-gradient(#ffff66 1px, transparent 1.5px);
-    background-size: 40px 40px, 70px 70px;
-    background-position: 0 0, 20px 35px;
+    background-color: #006b2d;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ctext x='8' y='40' font-size='30' fill='%2339d36f' opacity='.55'%3E%E2%98%98%3C/text%3E%3C/svg%3E"),
+      repeating-linear-gradient(45deg, #00803a 0 20px, #006b2d 20px 40px);
+    background-size: 60px 60px, auto;
     font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
     color: #000;
   }
   a { color: #0000ee; } a:visited { color: #551a8b; }
   .wrap { max-width: 760px; margin: 0 auto; background: #c0c0c0;
     border: 4px outset #ffffff; padding: 6px; }
-  .inner { background: #fffbe6; border: 3px inset #808080; padding: 10px; }
-  h1 { font-family: "Times New Roman", serif; font-size: 34px; text-align: center; margin: 6px 0;
-    color: #ff00ff; text-shadow: 3px 3px 0 #00ffff, 5px 5px 0 #000; letter-spacing: 1px; }
-  .rainbow { background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, magenta, red);
-    height: 8px; border: 1px solid #000; margin: 8px 0; }
+  .inner { background: #fdfbe8; border: 3px inset #808080; padding: 10px; }
+  h1 { font-family: "Uncial Antiqua", "Times New Roman", serif; font-size: 34px; text-align: center; margin: 6px 0;
+    color: #169b62; text-shadow: 2px 2px 0 #ff883e, 4px 4px 0 #000; letter-spacing: 1px; }
+  .rainbow { background: linear-gradient(90deg, #169b62 0 33.3%, #fff 33.3% 66.6%, #ff883e 66.6%);
+    height: 12px; border: 1px solid #000; margin: 8px 0; }
   .blink { animation: blink 1s steps(1) infinite; }
   @keyframes blink { 50% { visibility: hidden; } }
   .marquee { overflow: hidden; white-space: nowrap; background: #000; color: #00ff00;
     font-family: "Courier New", monospace; font-weight: bold; padding: 3px 0; border: 2px inset #808080; }
   .marquee span { display: inline-block; padding-left: 100%; animation: scroll 18s linear infinite; }
   @keyframes scroll { to { transform: translateX(-100%); } }
-  .construction { background: repeating-linear-gradient(45deg, #ffcc00 0 12px, #000 12px 24px);
+  .construction { background: repeating-linear-gradient(45deg, #169b62 0 12px, #fff 12px 24px, #ff883e 24px 36px);
     padding: 4px; text-align: center; margin: 8px 0; }
-  .construction b { background: #ffcc00; padding: 2px 8px; font-family: Arial, sans-serif; }
-  table.q { width: 100%; border: 3px ridge #ff00ff; background: #ffffff; margin: 10px 0; border-collapse: separate; }
-  table.q th { background: #ff00ff; color: #ffff00; font-size: 17px; text-align: left; padding: 5px; }
+  .construction b { background: #ffd700; padding: 2px 8px; font-family: Arial, sans-serif; }
+  table.q { width: 100%; border: 3px ridge #169b62; background: #ffffff; margin: 10px 0; border-collapse: separate; }
+  table.q th { background: #169b62; color: #fff; font-family: "Uncial Antiqua", "Comic Sans MS", cursive; font-size: 17px; text-align: left; padding: 5px; }
   table.q td { padding: 3px 8px; font-size: 15px; }
   label { cursor: pointer; display: block; padding: 3px 0; }
   .btn { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; background: #c0c0c0;
     border: 3px outset #fff; padding: 6px 18px; cursor: pointer; }
   .btn:active { border-style: inset; }
   .center { text-align: center; }
-  #result { display: none; border: 5px double #ff0000; background: #ffffcc; padding: 10px; margin-top: 12px; }
-  #result h2 { color: #ff0000; font-family: Impact, "Arial Black", sans-serif; font-size: 28px; margin: 4px 0;
+  #result { display: none; border: 5px double #169b62; background: #ffffcc; padding: 10px; margin-top: 12px; }
+  #result h2 { color: #169b62; text-shadow: 2px 2px 0 #ff883e; font-family: "Uncial Antiqua", Impact, sans-serif; font-size: 28px; margin: 4px 0;
     text-align: center; text-transform: uppercase; }
   .photo { border: 6px ridge gold; background: #000; width: 260px; max-width: 100%; min-height: 200px;
     margin: 8px auto; display: flex; align-items: center; justify-content: center; color: #0f0;
@@ -55,15 +54,15 @@
   .footer { font-size: 12px; text-align: center; font-family: "Times New Roman", serif; }
   .badges span { display: inline-block; border: 2px outset #fff; background: #000; color: #fff;
     font: bold 10px Arial, sans-serif; padding: 3px 5px; margin: 2px; }
-  .badges span:nth-child(2) { background: #008080; } .badges span:nth-child(3) { background: #800000; }
+  .badges span:nth-child(2) { background: #169b62; } .badges span:nth-child(3) { background: #ff883e; } .badges span:nth-child(4) { background: #0b5d1e; }
   #dotd { border: 4px ridge #00cc00; background: #000; color: #00ff00; padding: 8px; margin: 10px 0;
     font-family: "Courier New", monospace; }
-  #dotd h3 { margin: 2px 0 6px; text-align: center; color: #ffff00; font-family: Impact, "Arial Black", sans-serif;
+  #dotd h3 { margin: 2px 0 6px; text-align: center; color: #ffd700; font-family: "Uncial Antiqua", Impact, sans-serif;
     font-size: 24px; letter-spacing: 1px; }
   #dotd .row { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; justify-content: center; }
   #dotd .photo { width: 160px; min-height: 140px; margin: 0; }
   #dotd .txt { flex: 1 1 260px; }
-  #dotd .name { color: #ff66ff; font-size: 20px; font-weight: bold; }
+  #dotd .name { color: #ff883e; font-size: 20px; font-weight: bold; }
   #dotd .credit { color: #9f9; } #dotd .credit a { color: #9ff; }
   #popup-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center;
     justify-content: center; z-index: 999; padding: 16px; }
@@ -71,12 +70,15 @@
   .win { background: #c0c0c0; border: 3px outset #fff; width: 520px; max-width: 100%; max-height: 90vh; overflow: auto;
     box-shadow: 6px 6px 0 #000; animation: popin .25s ease-out; }
   @keyframes popin { from { transform: scale(.3); } to { transform: scale(1); } }
-  .titlebar { background: linear-gradient(90deg, #000080, #1084d0); color: #fff; font: bold 13px Arial, sans-serif;
+  .titlebar { background: linear-gradient(90deg, #0b5d1e, #169b62); color: #fff; font: bold 13px Arial, sans-serif;
     padding: 3px 4px 3px 8px; display: flex; justify-content: space-between; align-items: center; }
   .titlebar button { font: bold 12px Arial, sans-serif; width: 22px; height: 20px; padding: 0; background: #c0c0c0;
     border: 2px outset #fff; cursor: pointer; }
   .win #dotd { margin: 6px; }
   .win .actions { text-align: center; padding: 4px 0 10px; }
+  .shamrock-fall { position: fixed; top: -40px; font-size: 26px; pointer-events: none; z-index: 5;
+    animation: fall linear infinite; }
+  @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
   #error { color: red; font-weight: bold; text-align: center; }
   @media (max-width: 480px) { h1 { font-size: 26px; } }
 </style>
@@ -84,10 +86,10 @@
 <body>
 <div class="wrap"><div class="inner">
 
-<div class="marquee"><span>*** WELCOME 2 MY HOMEPAGE!!! *** Take the OFFICIAL* quiz *** Are U Sexy Daniel??? Sly Daniel??? Find out NOW!!! *** Warning: results may be 2 HOT 4 the internet *** Sign my guestbook *** Daniel 4 ever ***</span></div>
+<div class="marquee"><span>&#9752; C&Eacute;AD M&Iacute;LE F&Aacute;ILTE!!! &#9752; WELCOME 2 MY HOMEPAGE!!! *** Take the OFFICIAL* quiz *** Are U Sexy Daniel??? Sly Daniel??? Find out NOW!!! *** Warning: results may be 2 HOT 4 the internet *** Sign my guestbook *** Daniel 4 ever *** Up Donegal!!! *** Top o' the mornin' to ya *** &#9752;&#9752;&#9752;</span></div>
 
-<h1>~*~ Which Daniel O'Donnell Are You?? ~*~</h1>
-<p class="center"><font size="2">The <b>#1</b> Daniel O'Donnell personality quiz on the <i>World Wide Web</i>!!!</font></p>
+<h1>&#9752; Which Daniel O'Donnell Are You?? &#9752;</h1>
+<p class="center"><font size="2">The <b>#1</b> Daniel O'Donnell personality quiz on the <i>World Wide Web</i> &mdash; straight from the Emerald Isle!!! &#127470;&#127466;</font></p>
 <div class="rainbow"></div>
 
 <div class="construction"><b class="blink">!! NEW !! &nbsp; UPDATED 06/11/98 &nbsp; !! NEW !!</b></div>
@@ -108,25 +110,25 @@
       <div class="name" id="dotd-name"></div>
       <p id="dotd-desc"></p>
       <div>&gt; Daniel's wisdom: <i id="dotd-quote"></i></div>
-      <div>&gt; Lucky cardigan colour: <b id="dotd-colour"></b></div>
+      <div>&gt; Lucky cardigan colour (Irish edition): <b id="dotd-colour"></b></div>
       <div>&gt; Come back tomorrow 4 a new Daniel!!<span class="blink">_</span></div>
     </div>
   </div>
 </div>
-    <div class="actions"><button class="btn popup-close" type="button">OK, I LOVE HIM</button></div>
+    <div class="actions"><button class="btn popup-close" type="button">SL&Aacute;INTE! I LOVE HIM</button></div>
   </div>
 </div>
 
 <p class="center"><a href="#" id="dotd-open">&#9733; Show me the Daniel of the Day again &#9733;</a></p>
 
-<p>Hello and welcome, fellow Daniel fan! &#9752; Answer the 10 questions below <b>honestly</b> and my
+<p>Dia dhuit and welcome, fellow Daniel fan! &#9752; Grab a cup of tay and get comfy. Answer the 10 questions below <b>honestly</b> and my
 <u>state of the art</u> JavaScript will work out which Daniel O'Donnell matches your personality.
 Please be patient, it may take a while on a 28.8k modem!!</p>
 
 <form id="quiz" onsubmit="return false;"></form>
 
 <p id="error"></p>
-<p class="center"><button class="btn" id="go" type="button">&gt;&gt; TELL ME WHICH DANIEL I AM!! &lt;&lt;</button></p>
+<p class="center"><button class="btn" id="go" type="button">&#9752; TELL ME WHICH DANIEL I AM!! &#9752;</button></p>
 
 <div id="result">
   <p class="center"><font size="3">*~* Your results are in! *~* You are...</font></p>
@@ -138,7 +140,7 @@ Please be patient, it may take a while on a 28.8k modem!!</p>
     <a id="r-google" href="#" target="_blank" rel="noopener"><b>&#128269; See more pics of this Daniel on Google Images!!</b></a><br>
     <a href="#" id="r-newpic">[ Show me a different picture ]</a>
   </p>
-  <p class="center"><button class="btn" id="again" type="button">Take it again!</button></p>
+  <p class="center"><button class="btn" id="again" type="button">Go 'way outta that, I'll try again!</button></p>
 </div>
 
 <div class="rainbow"></div>
@@ -146,8 +148,8 @@ Please be patient, it may take a while on a 28.8k modem!!</p>
 <p class="center"><a href="mailto:webmaster@example.com">&#9993; Email the Webmaster</a> |
   <a href="#" onclick="alert('Guestbook is under construction! Check back soon :)'); return false;">Sign my Guestbook</a> |
   <a href="#" onclick="alert('You have joined the Daniel O\'Donnell Webring! (not really)'); return false;">Webring</a></p>
-<div class="center badges"><span>Netscape NOW!</span><span>Best viewed 800x600</span><span>Made with Notepad</span></div>
-<p class="footer">&copy; 1998 A Daniel Fan. This is an unofficial fan page made for fun &mdash; not affiliated with Daniel O'Donnell.<br>
+<div class="center badges"><span>Netscape NOW!</span><span>Best viewed 800x600</span><span>Made in Donegal</span><span>&#9752; 100% Irish</span></div>
+<p class="footer">&copy; 1998 A Daniel Fan, somewhere in Ireland. Sl&aacute;inte! This is an unofficial fan page made for fun &mdash; not affiliated with Daniel O'Donnell.<br>
 *not actually official. Photos load from Wikipedia/Wikimedia Commons.</p>
 
 </div></div>
@@ -359,9 +361,13 @@ var WISDOM = [
   "\"Always one more encore.\"",
   "\"Sequins are just sparkly confidence.\"",
   "\"If they're not crying by the third ballad, sing a fourth.\"",
-  "\"The tea is never too strong. You are too weak.\""
+  "\"The tea is never too strong. You are too weak.\"",
+  "\"Sure look, it'll be grand.\"",
+  "\"There's no such thing as bad weather, only the wrong cardigan.\"",
+  "\"May the road rise to meet you, and may the tour bus never break down.\"",
+  "\"Ah go on, have another scone. Go on. Go on go on go on.\""
 ];
-var COLOURS = ["Beige", "Oatmeal", "Mint Humbug Green", "Funeral Navy", "Rhinestone Silver", "Scandalous Burgundy", "Biscuit", "Mustard"];
+var COLOURS = ["Emerald Isle Green", "Aran Jumper Cream", "Shamrock Green", "Guinness Black", "Tricolour Orange", "Donegal Tweed Brown", "Pot o' Gold", "Leprechaun Lime", "Atlantic Grey"];
 
 (function () {
   var now = new Date();
@@ -392,6 +398,20 @@ var COLOURS = ["Beige", "Oatmeal", "Mint Humbug Green", "Funeral Navy", "Rhinest
   Array.prototype.forEach.call(document.querySelectorAll(".popup-close"), function (b) { b.onclick = close; });
   bg.onclick = function (e) { if (e.target === bg) close(); };
   document.getElementById("dotd-open").onclick = function (e) { e.preventDefault(); bg.classList.remove("hidden"); };
+})();
+
+// ---------- FALLING SHAMROCKS ----------
+(function () {
+  for (var i = 0; i < 10; i++) {
+    var el = document.createElement("div");
+    el.className = "shamrock-fall";
+    el.textContent = "\u2618";
+    el.style.left = (Math.random() * 95) + "vw";
+    el.style.color = ["#169b62", "#2ecc40", "#0b5d1e"][i % 3];
+    el.style.animationDuration = (7 + Math.random() * 8) + "s";
+    el.style.animationDelay = (-Math.random() * 12) + "s";
+    document.body.appendChild(el);
+  }
 })();
 
 // ---------- RETRO HIT COUNTER ----------
