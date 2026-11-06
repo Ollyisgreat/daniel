@@ -1,0 +1,300 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which Daniel O'Donnell Are You?</title>
+<style>
+  :root { color-scheme: light; }
+  body {
+    margin: 0; padding: 8px;
+    background-color: #000080;
+    background-image:
+      radial-gradient(#ffffff 1px, transparent 1.5px),
+      radial-gradient(#ffff66 1px, transparent 1.5px);
+    background-size: 40px 40px, 70px 70px;
+    background-position: 0 0, 20px 35px;
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    color: #000;
+  }
+  a { color: #0000ee; } a:visited { color: #551a8b; }
+  .wrap { max-width: 760px; margin: 0 auto; background: #c0c0c0;
+    border: 4px outset #ffffff; padding: 6px; }
+  .inner { background: #fffbe6; border: 3px inset #808080; padding: 10px; }
+  h1 { font-family: "Times New Roman", serif; font-size: 34px; text-align: center; margin: 6px 0;
+    color: #ff00ff; text-shadow: 3px 3px 0 #00ffff, 5px 5px 0 #000; letter-spacing: 1px; }
+  .rainbow { background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, magenta, red);
+    height: 8px; border: 1px solid #000; margin: 8px 0; }
+  .blink { animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { visibility: hidden; } }
+  .marquee { overflow: hidden; white-space: nowrap; background: #000; color: #00ff00;
+    font-family: "Courier New", monospace; font-weight: bold; padding: 3px 0; border: 2px inset #808080; }
+  .marquee span { display: inline-block; padding-left: 100%; animation: scroll 18s linear infinite; }
+  @keyframes scroll { to { transform: translateX(-100%); } }
+  .construction { background: repeating-linear-gradient(45deg, #ffcc00 0 12px, #000 12px 24px);
+    padding: 4px; text-align: center; margin: 8px 0; }
+  .construction b { background: #ffcc00; padding: 2px 8px; font-family: Arial, sans-serif; }
+  table.q { width: 100%; border: 3px ridge #ff00ff; background: #ffffff; margin: 10px 0; border-collapse: separate; }
+  table.q th { background: #ff00ff; color: #ffff00; font-size: 17px; text-align: left; padding: 5px; }
+  table.q td { padding: 3px 8px; font-size: 15px; }
+  label { cursor: pointer; display: block; padding: 3px 0; }
+  .btn { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; background: #c0c0c0;
+    border: 3px outset #fff; padding: 6px 18px; cursor: pointer; }
+  .btn:active { border-style: inset; }
+  .center { text-align: center; }
+  #result { display: none; border: 5px double #ff0000; background: #ffffcc; padding: 10px; margin-top: 12px; }
+  #result h2 { color: #ff0000; font-family: Impact, "Arial Black", sans-serif; font-size: 28px; margin: 4px 0;
+    text-align: center; text-transform: uppercase; }
+  .photo { border: 6px ridge gold; background: #000; width: 260px; max-width: 100%; min-height: 200px;
+    margin: 8px auto; display: flex; align-items: center; justify-content: center; color: #0f0;
+    font-family: "Courier New", monospace; font-size: 13px; }
+  .photo img { display: block; width: 100%; height: auto; }
+  .credit { font-size: 10px; font-family: Arial, sans-serif; color: #555; text-align: center; }
+  .counter { display: inline-block; background: #000; color: #f00; font-family: "Courier New", monospace;
+    font-size: 20px; letter-spacing: 3px; padding: 2px 6px; border: 2px inset #808080; }
+  .footer { font-size: 12px; text-align: center; font-family: "Times New Roman", serif; }
+  .badges span { display: inline-block; border: 2px outset #fff; background: #000; color: #fff;
+    font: bold 10px Arial, sans-serif; padding: 3px 5px; margin: 2px; }
+  .badges span:nth-child(2) { background: #008080; } .badges span:nth-child(3) { background: #800000; }
+  #error { color: red; font-weight: bold; text-align: center; }
+  @media (max-width: 480px) { h1 { font-size: 26px; } }
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+
+<div class="marquee"><span>*** WELCOME 2 MY HOMEPAGE!!! *** Take the OFFICIAL* quiz *** Find out which Daniel O'Donnell YOU are!!! *** Sign my guestbook *** Daniel 4 ever ***</span></div>
+
+<h1>~*~ Which Daniel O'Donnell Are You?? ~*~</h1>
+<p class="center"><font size="2">The <b>#1</b> Daniel O'Donnell personality quiz on the <i>World Wide Web</i>!!!</font></p>
+<div class="rainbow"></div>
+
+<div class="construction"><b class="blink">!! NEW !! &nbsp; UPDATED 06/11/98 &nbsp; !! NEW !!</b></div>
+
+<p>Hello and welcome, fellow Daniel fan! &#9752; Answer the 10 questions below <b>honestly</b> and my
+<u>state of the art</u> JavaScript will work out which Daniel O'Donnell matches your personality.
+Please be patient, it may take a while on a 28.8k modem!!</p>
+
+<form id="quiz" onsubmit="return false;"></form>
+
+<p id="error"></p>
+<p class="center"><button class="btn" id="go" type="button">&gt;&gt; TELL ME WHICH DANIEL I AM!! &lt;&lt;</button></p>
+
+<div id="result">
+  <p class="center"><font size="3">*~* Your results are in! *~* You are...</font></p>
+  <h2 id="r-title"></h2>
+  <div class="photo" id="r-photo">Loading picture... please wait...</div>
+  <div class="credit" id="r-credit"></div>
+  <p id="r-desc"></p>
+  <p class="center">
+    <a id="r-google" href="#" target="_blank" rel="noopener"><b>&#128269; See more pics of this Daniel on Google Images!!</b></a><br>
+    <a href="#" id="r-newpic">[ Show me a different picture ]</a>
+  </p>
+  <p class="center"><button class="btn" id="again" type="button">Take it again!</button></p>
+</div>
+
+<div class="rainbow"></div>
+<p class="center">You are visitor number<br><span class="counter" id="counter">000000</span></p>
+<p class="center"><a href="mailto:webmaster@example.com">&#9993; Email the Webmaster</a> |
+  <a href="#" onclick="alert('Guestbook is under construction! Check back soon :)'); return false;">Sign my Guestbook</a> |
+  <a href="#" onclick="alert('You have joined the Daniel O\'Donnell Webring! (not really)'); return false;">Webring</a></p>
+<div class="center badges"><span>Netscape NOW!</span><span>Best viewed 800x600</span><span>Made with Notepad</span></div>
+<p class="footer">&copy; 1998 A Daniel Fan. This is an unofficial fan page made for fun &mdash; not affiliated with Daniel O'Donnell.<br>
+*not actually official. Photos load from Wikipedia/Wikimedia Commons.</p>
+
+</div></div>
+
+<script>
+// ---------- THE DANIELS ----------
+var DANIELS = {
+  cardigan: {
+    title: "Cosy Cardigan Daniel",
+    google: "Daniel O'Donnell cardigan",
+    desc: "You are warmth in human form. You own at least four cardigans and have strong opinions about which one goes with which occasion. People come to you for a hug, a biscuit and a gentle ballad. You've never raised your voice in your life, and your idea of a wild night is a second cup of tea after 9pm. Grannies across the land adore you, and frankly so does everyone else."
+  },
+  donegal: {
+    title: "Donegal Homebird Daniel",
+    google: "Daniel O'Donnell Donegal Kincasslagh",
+    desc: "You could travel the world, but honestly, why would you when home has the best views, the best people and the best chips? You know every road, every neighbour and every neighbour's dog. You're loyal to your roots, a bit sentimental, and you get misty-eyed at a good sunset over the Atlantic. Wherever you go, you bring a little bit of home with you."
+  },
+  tea: {
+    title: "Tea Party Host Daniel",
+    google: "Daniel O'Donnell fans tea party",
+    desc: "Your door is ALWAYS open. Thousands of people could turn up at your house and you'd have the kettle on and a smile for every single one of them. You remember everyone's name, ask after their family and pose for every photo. You are the ultimate people-person and you'd genuinely rather be chatting to strangers than sitting alone."
+  },
+  dancer: {
+    title: "Strictly Sparkly Daniel",
+    google: "Daniel O'Donnell Strictly Come Dancing",
+    desc: "Underneath the gentle exterior lies a man who LIVES for the sequins. Put on a cha-cha and you're off. You'll try anything once, you're not afraid to look a bit silly, and you secretly practise your moves in the kitchen. Your friends love you because you're always game for a laugh and you bring the glitter to every occasion."
+  },
+  mammy: {
+    title: "Mammy's Golden Boy Daniel",
+    google: "Daniel O'Donnell with his mother",
+    desc: "Family is everything to you. You ring home every week (at least), you never forget a birthday and you've been told you're 'a credit to your mother' more times than you can count. You're polite, well-mannered and a bit old-fashioned in the loveliest way. You'd write a song for your mammy and you're not ashamed of it one bit."
+  },
+  tour: {
+    title: "Rhinestone Road Warrior Daniel",
+    google: "Daniel O'Donnell concert stage",
+    desc: "The stage is your home and the tour bus is your sitting room. You've got stamina that would put a rock star to shame and you're happiest in front of an audience belting out a country classic. You're a hard worker, a natural entertainer and you'll do one more encore than anyone expected. The show must go on and you ARE the show."
+  }
+};
+
+// ---------- QUESTIONS ----------
+var QUESTIONS = [
+  { q: "It's a Saturday night. What are you doing?", a: [
+    ["Feet up by the fire in a nice woolly jumper", "cardigan"],
+    ["Down the local catching up with everyone", "donegal"],
+    ["Hosting a big get-together, kettle on", "tea"],
+    ["Out dancing 'til the cows come home!", "dancer"] ]},
+  { q: "Pick a drink:", a: [
+    ["A nice cup of tea, milk and two sugars", "tea"],
+    ["Whatever Mammy's making", "mammy"],
+    ["Hot chocolate with marshmallows", "cardigan"],
+    ["A pint of water - gotta protect the voice for tonight's gig", "tour"] ]},
+  { q: "Your dream holiday is...", a: [
+    ["Holiday? Why leave home? Sure it's gorgeous here", "donegal"],
+    ["A world tour with a gig in every city", "tour"],
+    ["A cruise with ballroom dancing every night", "dancer"],
+    ["Bringing the whole family somewhere sunny", "mammy"] ]},
+  { q: "Which item of clothing best describes you?", a: [
+    ["A cardigan, obviously", "cardigan"],
+    ["A sparkly sequinned shirt", "dancer"],
+    ["A sharp suit for the stage", "tour"],
+    ["My good Sunday shirt that Mammy ironed", "mammy"] ]},
+  { q: "A stranger knocks on your door. You:", a: [
+    ["Invite them in for tea and a scone!", "tea"],
+    ["Recognise them - it's Mary from down the road's cousin", "donegal"],
+    ["Sign an autograph and give them a hug", "tour"],
+    ["Offer them a cardigan, it's chilly out", "cardigan"] ]},
+  { q: "Pick a song to sing at karaoke:", a: [
+    ["A slow, gentle ballad", "cardigan"],
+    ["Something upbeat you can do a little dance to", "dancer"],
+    ["A song about the old country", "donegal"],
+    ["A song dedicated to my mother", "mammy"] ]},
+  { q: "Your friends would describe you as:", a: [
+    ["The life and soul of the party", "dancer"],
+    ["Hard-working, never stops", "tour"],
+    ["The one who always remembers your birthday", "mammy"],
+    ["The best host in the world", "tea"] ]},
+  { q: "What's your biggest fear?", a: [
+    ["Running out of biscuits when visitors come", "tea"],
+    ["Losing my voice before a big show", "tour"],
+    ["Being too far from home for too long", "donegal"],
+    ["A moth getting into my knitwear", "cardigan"] ]},
+  { q: "Pick a phrase:", a: [
+    ["\"Sure it's grand.\"", "donegal"],
+    ["\"Will you have another cup?\"", "tea"],
+    ["\"Five, six, seven, eight!\"", "dancer"],
+    ["\"I'll ring Mammy and ask.\"", "mammy"] ]},
+  { q: "Finally... how do you feel about rhinestones?", a: [
+    ["The more the better!!!", "tour"],
+    ["Love them, especially on a dancefloor", "dancer"],
+    ["A bit flashy for me, I prefer wool", "cardigan"],
+    ["Only if Mammy approves", "mammy"] ]}
+];
+
+// ---------- BUILD THE FORM ----------
+var form = document.getElementById("quiz");
+QUESTIONS.forEach(function (item, i) {
+  var t = document.createElement("table");
+  t.className = "q";
+  var html = "<tr><th>Question " + (i + 1) + ": " + item.q + "</th></tr>";
+  item.a.forEach(function (ans, j) {
+    html += '<tr><td><label><input type="radio" name="q' + i + '" value="' + ans[1] + '"> ' + ans[0] + "</label></td></tr>";
+  });
+  t.innerHTML = html;
+  form.appendChild(t);
+});
+
+// ---------- PICTURE PICKER (runs in visitor's browser) ----------
+var photoCache = null;
+function loadPhotos(cb) {
+  if (photoCache) return cb(photoCache);
+  var api = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*" +
+    "&titles=" + encodeURIComponent("Daniel O'Donnell") +
+    "&generator=images&gimlimit=50&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=320";
+  fetch(api).then(function (r) { return r.json(); }).then(function (data) {
+    var pages = (data.query && data.query.pages) || {};
+    var list = [];
+    Object.keys(pages).forEach(function (k) {
+      var p = pages[k], info = p.imageinfo && p.imageinfo[0];
+      if (!info || !/\.(jpe?g|png)$/i.test(p.title)) return;
+      if (/logo|flag|icon|symbol|commons|wiki/i.test(p.title)) return;
+      var artist = info.extmetadata && info.extmetadata.Artist ? info.extmetadata.Artist.value.replace(/<[^>]*>/g, "") : "";
+      list.push({ src: info.thumburl || info.url, page: info.descriptionurl, artist: artist });
+    });
+    photoCache = list; cb(list);
+  }).catch(function () { photoCache = []; cb([]); });
+}
+
+function showPhoto() {
+  var box = document.getElementById("r-photo"), credit = document.getElementById("r-credit");
+  box.innerHTML = "Loading picture... please wait...";
+  credit.innerHTML = "";
+  loadPhotos(function (list) {
+    if (!list.length) {
+      box.innerHTML = "<div style='padding:20px;text-align:center'>[ IMAGE NOT FOUND ]<br><br>Error 404: Daniel too handsome to display.<br><br>Click the Google link below!</div>";
+      return;
+    }
+    var pick = list[Math.floor(Math.random() * list.length)];
+    var img = new Image();
+    img.alt = "Daniel O'Donnell";
+    img.onload = function () { box.innerHTML = ""; box.appendChild(img); };
+    img.onerror = function () { box.innerHTML = "[ picture failed to load :( ]"; };
+    img.src = pick.src;
+    credit.innerHTML = 'Photo: <a href="' + pick.page + '" target="_blank" rel="noopener">Wikimedia Commons</a>' +
+      (pick.artist ? " &mdash; " + pick.artist.replace(/</g, "&lt;") : "");
+  });
+}
+
+// ---------- SCORING ----------
+function score() {
+  var tally = {}, unanswered = 0;
+  Object.keys(DANIELS).forEach(function (k) { tally[k] = 0; });
+  for (var i = 0; i < QUESTIONS.length; i++) {
+    var chosen = form.querySelector('input[name="q' + i + '"]:checked');
+    if (!chosen) { unanswered++; continue; }
+    tally[chosen.value]++;
+  }
+  var err = document.getElementById("error");
+  if (unanswered) {
+    err.innerHTML = "<span class='blink'>!!</span> Oops! You missed " + unanswered + " question" + (unanswered > 1 ? "s" : "") + ". Daniel needs ALL your answers! <span class='blink'>!!</span>";
+    return;
+  }
+  err.innerHTML = "";
+  var best = [], top = -1;
+  Object.keys(tally).forEach(function (k) {
+    if (tally[k] > top) { top = tally[k]; best = [k]; } else if (tally[k] === top) best.push(k);
+  });
+  var key = best[Math.floor(Math.random() * best.length)];
+  var d = DANIELS[key];
+  document.getElementById("r-title").textContent = d.title;
+  document.getElementById("r-desc").textContent = d.desc;
+  document.getElementById("r-google").href = "https://www.google.com/search?tbm=isch&q=" + encodeURIComponent(d.google);
+  var res = document.getElementById("result");
+  res.style.display = "block";
+  showPhoto();
+  res.scrollIntoView({ behavior: "smooth" });
+}
+
+document.getElementById("go").onclick = score;
+document.getElementById("r-newpic").onclick = function (e) { e.preventDefault(); showPhoto(); };
+document.getElementById("again").onclick = function () {
+  form.reset();
+  document.getElementById("result").style.display = "none";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+// ---------- RETRO HIT COUNTER ----------
+(function () {
+  var n = 13377 + Math.floor(Date.now() / 600000) % 5000;
+  try {
+    var mine = parseInt(localStorage.getItem("danielVisits") || "0", 10) + 1;
+    localStorage.setItem("danielVisits", mine);
+    n += mine;
+  } catch (e) {}
+  document.getElementById("counter").textContent = ("000000" + n).slice(-6);
+})();
+</script>
+</body>
+</html>
